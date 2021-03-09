@@ -6,7 +6,6 @@ Date: 2017/07/09
 To compile and print out the help please use the following command lines:
 
 ```bash
-cd core
 make -j8
 ./d4 --help
 ```
@@ -14,7 +13,6 @@ make -j8
 To compile in debug mode (make possible the use of gdb and valgrind) and print out the help  please use:
 
 ```bash
-cd core
 make -j8 d
 ./d4_debug --help
 ```
@@ -22,8 +20,7 @@ make -j8 d
 To compile in profil mode (make possible the use gprof) and print out the help please use:
 
 ```bash
-cd core
-make -j8 d
+make -j8 p
 ./d4_profil --help
 ```
 
@@ -31,7 +28,6 @@ make -j8 d
 To compile in static mode and print out the help please use:
 
 ```bash
-cd core
 make -j8 rs
 ./d4_static --help
 ```
