@@ -32,8 +32,6 @@ make -j8 rs
 ./d4_static --help
 ```
 
-
-
 # How to run
 
 To run the model counter:
@@ -53,7 +51,7 @@ To get the resulting decision-DNNF representation in file /tmp/test.nnf please u
 ```bash
 ./d4 -dDNNF benchTest/littleTest.cnf -out=/tmp/test.nnf
 cat /tmp/test.nnf
-o 1 1 0
+o 1 0
 o 2 0
 o 3 0
 t 4 0
@@ -72,7 +70,7 @@ both nodes and arcs are represented. When a literal becomes true at some node
 there is no more need to create an AND node and a literal node to capture it.
 Instead the literal is attached to the arc connecting the node with its father.
 Each line represents a node or an arc, and is terminated by 0.
-When a line represents a node it starts with a node type.
+When a line represents a node it starts with a node type and is followed by its index.
 Here are the node types:
 
     o, for an OR node
@@ -83,15 +81,17 @@ Here are the node types:
     The second argument just after the type of node is its index.
 
     In the example above the decision-DNNF representation has
-    3 OR nodes (1, 2 and 3) and 1 true node.
+    3 OR nodes (1, 2 and 3) and 1 true node (4).
 
 As expected arcs are used to connect the nodes.
 In the file .nnf, arcs are represented by lines starting with a node index
 (a positive integer, the source node), followed by another node index
-(a positive integer, the target node), and eventually  .
+(a positive integer, the target node), and eventually a sequence of literals
+that represents the unit literals that become true at the target node.
 
 
-    For example, 2 3 -2 0 means the node or with the index 2 is linked to the false node because we branch with the literal -2.
+    In the example, 3 4 -2 3 0 means that OR node of index 3 is connected to the
+    true node of index 4 and the literals -2 and 3 are set to true.
 
 
 To get the resulting certified decision-DNNF representation in file /tmp/test.nnf enhanced
