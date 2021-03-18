@@ -17,7 +17,7 @@ make -j8 d
 ./d4_debug --help
 ```
 
-To compile in profil mode (make possible the use gprof) and print out the help please use:
+To compile in profile mode (make possible to use gprof) and print out the help please use:
 
 ```bash
 make -j8 p

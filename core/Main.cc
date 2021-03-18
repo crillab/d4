@@ -18,9 +18,6 @@
 #include <iostream>
 #include <cassert>
 
-#ifndef STATIC_COMP
-#include <mpi.h>
-#endif
 
 #include "../manager/OptionManager.hh"
 #include "../modelCounters/ModelCounter.hh"
@@ -199,9 +196,6 @@ void printCNFtoDimacs(vec<vec<Lit> > &clauses, int nbVar)
     }
 }// printCNFtoDimacs
 
-#ifndef STATIC_COMP
-#include "../utils/Communicator.hh"
-#endif
 
 /**
    The main function!

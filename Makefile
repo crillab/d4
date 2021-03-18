@@ -16,7 +16,7 @@ RCOBJS     = $(addsuffix r,  $(COBJS))
 
 PATOH_PATH = patoh/libpatoh.a
 
-CXX        = mpic++ -std=c++11
+CXX        = g++ -std=c++11
 #CFLAGS    ?= -Wall -Wno-parentheses
 
 UNAME := $(shell uname)
