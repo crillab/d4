@@ -48,7 +48,7 @@ To run the dDNNF compiler:
 ./d4 -dDNNF benchTest/littleTest.cnf
 ```
 
-To get the dDNNF in the file /tmp/test.nnf please use:
+To get the resulting decision-DNNF representation in file /tmp/test.nnf please use:
 
 ```bash
 ./d4 -dDNNF benchTest/littleTest.cnf -out=/tmp/test.nnf
@@ -64,7 +64,38 @@ t 4 0
 1 2 0
 ```
 
-To get the certified dDNNF in the file /tmp/test.nnf enhance with the drat proof saved in /tmp/test.drat, please use:
+
+Note that the format used now is an extension of the previous format
+(as defined in the archive of c2d available from http://reasoning.cs.ucla.edu/c2d/).
+The management of propagated literals has been improved in the new format, where
+both nodes and arcs are represented. When a literal becomes true at some node
+there is no more need to create an AND node and a literal node to capture it.
+Instead the literal is attached to the arc connecting the node with its father.
+Each line represents a node or an arc, and is terminated by 0.
+When a line represents a node it starts with a node type.
+Here are the node types:
+
+    o, for an OR node
+    f, for a false leaf
+    t, for a true leaf
+    a, for an AND node (not present in this example)
+
+    The second argument just after the type of node is its index.
+
+    In the example above the decision-DNNF representation has
+    3 OR nodes (1, 2 and 3) and 1 true node.
+
+As expected arcs are used to connect the nodes.
+In the file .nnf, arcs are represented by lines starting with a node index
+(a positive integer, the source node), followed by another node index
+(a positive integer, the target node), and eventually  .
+
+
+    For example, 2 3 -2 0 means the node or with the index 2 is linked to the false node because we branch with the literal -2.
+
+
+To get the resulting certified decision-DNNF representation in file /tmp/test.nnf enhanced
+with the drat proof saved in /tmp/test.drat, please use:
 
 ```bash
 ./d4 -dDNNF benchTest/littleTest.cnf -out=/tmp/test.nnf -drat=/tmp/test.drat
