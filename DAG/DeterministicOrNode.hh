@@ -81,7 +81,8 @@ public:
     stamp = globalStamp + idxOutputStruct + 1;
     int idxCurrent = ++idxOutputStruct;
 
-    out << "o " << idxCurrent << " " << sons.size() << " 0" << endl;
+    //out << "o " << idxCurrent << " " << sons.size() << " 0" << endl;
+    out << "o " << idxCurrent << endl;
 
     for(int i = 0 ; i<sons.size() ; i++)
       {

@@ -80,7 +80,7 @@ public:
       for(int i = 0 ; i<reasonForUnits.size() ; i++) out << reasonForUnits[i] << " ";
       out << "0" << endl;
     }
-    else out << "o " << idxCurrent << " 1 0" << endl;
+    else out << "o " << idxCurrent << " 0" << endl;
 
     b.printNNF(out, certif);
     out << idxCurrent << " " << (b.d)->getIdx() << " ";

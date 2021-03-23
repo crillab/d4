@@ -95,7 +95,9 @@ public:
     stamp = globalStamp + idxOutputStruct + 1;
     int idxCurrent = ++idxOutputStruct;
 
-    out << "a " << idxCurrent << " " << header.szChildren << " 0" << endl;
+    // out << "a " << idxCurrent << " " << header.szChildren << " 0" << endl;
+    out << "a " << idxCurrent << " 0" << endl;
+    
     DAG<T> **children = &allChildren[header.posInAllChildren];
     for(int i = 0 ; i<header.szChildren ; i++)
       {
