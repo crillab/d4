@@ -456,7 +456,7 @@ template <class T> class DDnnfCompiler
     isProjectedVar.copyTo(DAG<T>::varProjected);
     wl.copyTo(DAG<T>::weights);
     for(int i = 0 ; i<s.nVars() ; i++) DAG<T>::weightsVar.push(wl[i<<1] + wl[(i<<1) | 1]);
-    cache->setInfoFormula(s.nVars(), cnf.size(), occManager->getMaxSizeClause());
+    if (!initUnsat) cache->setInfoFormula(s.nVars(), cnf.size(), occManager->getMaxSizeClause());
   }// DDnnfCompiler
 
 
