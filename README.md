@@ -113,3 +113,13 @@ cat /tmp/test.drat
 1 2 3 0
 d 1 2 3 0
 ```
+
+The format used for certifying the d-DNNF has been sligthly modified in order to gather the clauses that have been used to propagate the unit literals.
+Since literals are always associated to decision nodes, this information has been added on these kind of nodes.
+More precisely, just after the index of the node we can now find the number of branches the node has.
+Then the indexes of the clauses, following the order in the drat file, are given.
+
+
+    In the example, 0 1 1 0 means that we are considering an OR node of index 1 which is connected to 1 node. 0 3 2 1 0 means that we are considering an OR node which is connected with 2 other 
+    nodes and such that the clause with the index 1 has been used to progatate some literals on some branches connected to it.
+    
